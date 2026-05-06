@@ -1,0 +1,94 @@
+body {
+    background-image: url("../imgs/background.avif");
+    background-size: cover;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#game-board {
+    display: flex;
+    flex-wrap: wrap;       
+    justify-content: center;  
+    gap: 10px;               
+    width: 500px;        
+}
+
+.radio-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.card {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.3s;
+}
+
+.front {
+    transform: rotateY(180deg);
+}
+
+.card.flipped .front {
+    transform: rotateY(0);
+}
+
+.card.flipped .back {
+    transform: rotateY(180deg);
+}
+
+#menu {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    width: 260px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    text-align: center;
+}
+
+#menu input, button {
+    padding: 8px;
+    font-size: 16px;
+}
+
+#ui {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 20px;
+}
+
+#resetBtn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
