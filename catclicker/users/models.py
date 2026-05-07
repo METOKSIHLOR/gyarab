@@ -14,3 +14,11 @@ def create_user_score(sender, instance, created, **kwargs):
     if created:
         from game.models import Score
         Score.objects.get_or_create(user=instance)
+
+class UserUpgrade(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='upgrades')
+    upgrade_name = models.CharField(max_length=100)
+    quantity = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        unique_together = ('user', 'upgrade_name')

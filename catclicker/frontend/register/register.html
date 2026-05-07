@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrace</title>
+    <link rel="stylesheet" href="/static/register/register.css">
+</head>
+<body>
+    <div class="auth-container">
+        <form id="registerForm" class="auth-form">
+            <h2>Vytvořit účet</h2>
+            <div class="input-group">
+                <input type="text" name="name" placeholder="Uživatelské jméno" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Heslo" required>
+            </div>
+            <button type="submit" class="btn-main">Zaregistrovat se</button>
+            <p id="error-message" class="error-text"></p>
+            <a href="../login" class="auth-link">Již máte účet? Přihlaste se</a>
+        </form>
+    </div>
+
+    <script src="/static/register/register.js"></script>
+</body>
+</html>

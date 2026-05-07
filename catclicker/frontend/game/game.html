@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Catclicker</title>
+    <link rel="stylesheet" href="/static/game/game.css">
+</head>
+<body>
+<div class="game-container">
+    <div class="stats-panel">
+        <div class="stat-item">Total: <span id="points">0</span></div>
+        <div class="stat-item">Points per second: <span id="pps">0</span></div>
+        <div class="stat-item">Points per click: <span id="ppc">1</span></div>
+    </div>
+
+    <div class="click-zone">
+        <div id="cat-target">
+            <img src="/static/game/cat_close.png" alt="Cat">
+        </div>
+
+        <button id="openShopBtn" class="btn-shop">Shop</button>
+    </div>
+    <div id="shopModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Shop</h2>
+            <div id="upgrades-list">
+            </div>
+        </div>
+    </div>
+
+    <div id="logout-container" class="logout">
+        <button id="logout-btn" class="logout-btn">Logout</button>
+    </div>
+
+</div>
+    <script src="/static/game/game.js"></script>
+</body>
+</html>

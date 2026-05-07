@@ -1,9 +1,7 @@
-import json
 import uuid
-from typing import Literal
 
 from django import forms
-from django.http import HttpResponse, JsonResponse, Http404
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
@@ -11,42 +9,12 @@ from core.storage import storage
 from game.models import Score
 from users.auth.hash import hash_password, verify_password
 from users.models import User
+from utils import check_method, check_data, get_user_profile
 
 
 class UserCredsForm(forms.Form):
     name = forms.CharField(max_length=100)
     password = forms.CharField(max_length=100)
-
-def check_method(request, method: Literal["POST", "PUT", "DELETE", "PATCH", "GET"]):
-    if request.method != method:
-        raise Http404("Page not found")
-
-def check_data(request):
-    try:
-        data = json.loads(request.body)
-    except json.JSONDecodeError:
-        return JsonResponse({"error": "Invalid JSON"}, status=400)
-
-    return data
-
-def get_user_profile(request):
-    session_id = request.COOKIES.get("session_id")
-
-    if not session_id:
-        raise ValueError({"error": "User not authorized",
-                                  "status": 401})
-
-    user_id = storage.get(name=f"session_id:{session_id}")
-
-    if not user_id:
-        raise ValueError({"error": "Session expired or invalid",
-                          "status": 401})
-    user = User.objects.filter(id=user_id).first()
-
-    if not user:
-        raise ValueError({"error": "User not found",
-                          "status": 404})
-    return user
 
 @csrf_exempt
 def user_register(request):
@@ -127,9 +95,7 @@ def user_profile(request):
                          "ppc": profile.points_per_click})
 
 def register_render(request):
-    return HttpResponse("Hello, world. You're at the register page.")
-    #return render(request, "users/register.html")
+    return render(request, "register/register.html")
 
 def login_render(request):
-    return HttpResponse("Hello, world. You're at the login page.")
-    #return render(request, "users/login.html")
+    return render(request, "login/login.html")

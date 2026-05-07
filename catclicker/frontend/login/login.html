@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přihlášení</title>
+    <link rel="stylesheet" href="/static/login/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm" class="login-form">
+            <h2>Přihlásit se</h2>
+            <div class="input-group">
+                <input type="text" name="name" placeholder="Uživatelské jméno" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Heslo" required>
+            </div>
+            <button type="submit" class="btn-main">Přihlásit se</button>
+            <p id="error-message" class="error-text"></p>
+            <a href="../register" class="auth-link">Jste tu poprvé? Zaregistrujte se</a>
+        </form>
+    </div>
+
+    <script src="/static/login/login.js"></script>
+</body>
+</html>

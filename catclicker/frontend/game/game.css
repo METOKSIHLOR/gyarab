@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #fff0f5;
+    color: #4a4a4a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.game-container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.stats-panel {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.stat-item {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.stat-item span {
+    display: block;
+    color: #ff6090;
+    font-size: 1.5rem;
+}
+
+.click-zone {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.logout-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+
+    background-color: #ff6090;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 96, 144, 0.3);
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #f05080;
+    transform: translateY(-2px);
+}
+
+#cat-target {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    user-select: none;
+}
+
+#cat-target img {
+    width: 250px;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+}
+
+#cat-target:active {
+    transform: scale(0.92);
+}
+
+.btn-shop {
+    background-color: #ff6090;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 96, 144, 0.3);
+    transition: 0.3s;
+}
+
+.btn-shop:hover {
+    background-color: #f05080;
+    transform: translateY(-2px);
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+}
+
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 25px;
+    width: 90%;
+    max-width: 350px;
+    border-radius: 25px;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.upgrade-btn {
+    width: 100%;
+    background: #fff;
+    border: 2px solid #ffedf2;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: 0.2s;
+}
+
+.upgrade-btn:hover {
+    border-color: #ff6090;
+    background-color: #fff9fa;
+}
+
+.upgrade-btn strong { color: #ff6090; }
+.upgrade-btn small { color: #888; margin-top: 4px; }
