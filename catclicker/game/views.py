@@ -14,11 +14,21 @@ from utils import get_user_profile, check_method, check_data
 
 # Seznam dostupných vylepšení s jejich cenou a efektem
 upgrades = [
-    {"name": "cat mint", "cost": 1, "effect": {"pps": 1, "ppc": 0}},
-    {"name": "ball of thread", "cost": 100, "effect": {"pps": 0, "ppc": 1}},
-    {"name": "scratching post", "cost": 300, "effect": {"pps": 3, "ppc": 1}},
-    {"name": "cat bed", "cost": 500, "effect": {"pps": 3, "ppc": 3}},
-    {"name": "cat hat", "cost": 1000, "effect": {"pps": 7, "ppc": 7}},
+    {"name": "Miska mléka", "cost": 15, "effect": {"pps": 1, "ppc": 0}},
+    {"name": "Papírová krabice", "cost": 100, "effect": {"pps": 5, "ppc": 0}},
+    {"name": "Gumová myš", "cost": 250, "effect": {"pps": 0, "ppc": 2}},
+
+    {"name": "Škrabadlo Deluxe", "cost": 500, "effect": {"pps": 12, "ppc": 1}},
+    {"name": "Catnip High Quality", "cost": 1200, "effect": {"pps": 25, "ppc": 0}},
+    {"name": "Laserové ukazovátko", "cost": 3000, "effect": {"pps": 50, "ppc": 5}},
+
+    {"name": "Automatické krmítko", "cost": 7500, "effect": {"pps": 120, "ppc": 0}},
+    {"name": "Vyhřívaný pelíšek", "cost": 15000, "effect": {"pps": 250, "ppc": 10}},
+    {"name": "Robotický vysavač", "cost": 50000, "effect": {"pps": 600, "ppc": 0}},
+
+    {"name": "Kočičí kavárna", "cost": 150000, "effect": {"pps": 1500, "ppc": 50}},
+    {"name": "Chrám bohyně Bastet", "cost": 500000, "effect": {"pps": 5000, "ppc": 100}},
+    {"name": "Vesmírná stanice MIAU", "cost": 2000000, "effect": {"pps": 25000, "ppc": 500}},
 ]
 
 # Jednoduchý formulář pro validaci názvu vylepšení při nákupu
