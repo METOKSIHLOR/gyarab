@@ -19,10 +19,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from game.views import game_render
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", game_render),
     path("api/users/", include("users.urls.api")),
     path("api/game/", include("game.urls.api")),
     path("", include("users.urls.render")),
-    path("", include("game.urls.render")),
 ]
+
+admin.site.site_header = "CatClicker admin panel"

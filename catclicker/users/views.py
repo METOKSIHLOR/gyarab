@@ -111,11 +111,11 @@ def register_render(request):
         user = get_user_profile(request)
     except ValueError as e:
         return render(request, "register/register.html")
-    return redirect("../game") # pokud uživatel už je authorizovan
+    return redirect("../") # pokud uživatel už je authorizovan
 
 def login_render(request):
     try:
         user = get_user_profile(request)
     except ValueError as e:
         return render(request, "login/login.html")
-    return redirect("../game") # pokud uživatel už je authorizovan
+    return redirect("../") # pokud uživatel už je authorizovan

@@ -22,3 +22,10 @@ class Score(models.Model):
             self.save(update_fields=['points', 'last_updated'])
 
         return self.points
+    
+    class Meta:
+        verbose_name = "Bodování"
+        verbose_name_plural = "Bodování"
+
+    def __str__(self):
+        return f"Score of {self.user.name}: {self.points}"

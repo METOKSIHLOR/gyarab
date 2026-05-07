@@ -9,6 +9,13 @@ class User(models.Model):
     points_per_second = models.IntegerField(default=0)
     points_per_click = models.IntegerField(default=1)
 
+    class Meta:
+        verbose_name = "Uživatel"
+        verbose_name_plural = "Uživatelé"
+
+    def __str__(self):
+        return self.name
+    
 # Pro uživatele automaticky vytvoříme záznam v databázi s jeho skóre.
 @receiver(post_save, sender=User)
 def create_user_score(sender, instance, created, **kwargs):
@@ -24,3 +31,8 @@ class UserUpgrade(models.Model):
 
     class Meta:
         unique_together = ('user', 'upgrade_name')
+        verbose_name = 'Vylepšení'
+        verbose_name_plural = 'Vylepšení'
+
+    def __str__(self):
+        return f"Upgrade of {self.user.name}: {self.upgrade_name}"
