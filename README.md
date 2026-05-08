@@ -78,6 +78,14 @@ Jednoduchá hra inspirovaná Cookie Clickerem vytvořená pomocí frameworku Dja
 ## Rychlé spuštění
 
 ```bash
+cd catclicker
+```
+
+```bash
+python manage.py migrate
+```
+
+```bash
 docker-compose up --build
 ```
 
