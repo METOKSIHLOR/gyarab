@@ -7,11 +7,13 @@ init(autoreset=True)
 def main():
     while True:
         vyber = input(Fore.CYAN + 'Stisknete "1" pokud chcete konvertovat z jine meny do CZK. '
-                                'Pokud chcete konvertovat z CZK do jine meny stisknete "2".\n')
+                                'Pokud chcete konvertovat z CZK do jine meny stisknete "2".' +
+            Fore.GREEN + '\n>>> ' + Style.RESET_ALL).strip()
         if vyber not in ['1', '2']:
             continue
 
-        mena = input(Fore.YELLOW + "Zadejte prosim kod meny (napr. USD), se kterou chcete pracovat\n").upper()
+        mena = input(Fore.YELLOW + "Zadejte prosim kod meny (napr. USD), se kterou chcete pracovat:" +
+            Fore.GREEN + '\n>>> ' + Style.RESET_ALL).strip().upper()
 
         if vyber == "1":
             data = get_data(curr_from=mena, curr_to="CZK")
@@ -23,7 +25,8 @@ def main():
             continue
 
         try:
-            castka = float(input(Fore.GREEN + "Zadejte prosim castku meny, kterou chcete konvertovat\n"))
+            castka = float(input(Fore.BLUE + "Zadejte prosim castku meny, kterou chcete konvertovat" +
+            Fore.GREEN + '\n>>> ' + Style.RESET_ALL).strip())
         except ValueError:
             print(Fore.RED + "Neplatna castka. Zkuste prosim jeste jednou")
             continue
