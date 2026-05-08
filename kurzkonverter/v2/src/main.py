@@ -1,8 +1,5 @@
 from kurz import get_data
-from colorama import Fore, Style, init
-
-# Initialize colorama for Windows compatibility
-init(autoreset=True)
+from colorama import Fore, Style
 
 def main():
     while True:
