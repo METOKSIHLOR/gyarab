@@ -89,7 +89,7 @@ python manage.py migrate
 docker-compose up --build
 ```
 
-Aplikace bude spuštěna na portu http://127.0.0.1:8000/ nebo http://localhost:8000/.
+Aplikace bude spuštěna na http://127.0.0.1:8000/ nebo http://localhost:8000/.
 
 ---
 
