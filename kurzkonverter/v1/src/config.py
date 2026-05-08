@@ -12,7 +12,7 @@ class Config:
 
 def load_config():
     env = Env()
-    env.read_env(path=".env")
+    env.read_env(path="kurzkonverter/v1/.env")
     return Config(api=API(url=env.str("API_URL")))
 
 config = load_config()
