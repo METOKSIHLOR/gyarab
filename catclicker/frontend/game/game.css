@@ -135,11 +135,6 @@ body {
     margin-top: 10px;
 }
 
-@keyframes slideIn {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
 .close-modal {
     position: absolute;
     right: 20px; top: 15px;
