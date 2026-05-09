@@ -105,8 +105,6 @@ Aplikace bude spuštěna na http://127.0.0.1:8000/ nebo http://localhost:8000/.
 
 ---
 
-# Autor
-
 Projekt byl vytvořen jako studijní a demonstrační portfolio.
 
 
