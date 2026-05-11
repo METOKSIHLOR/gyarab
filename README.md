@@ -75,6 +75,32 @@ Jednoduchá hra inspirovaná Cookie Clickerem vytvořená pomocí frameworku Dja
 - pasivní získávání bodů
 - systém upgradů
 
+## Databázové schéma
+![img.png](db_schema.png)
+
+## Atributy modelů
+
+```bash
+class User(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, unique=True)
+    hashed_password = models.CharField(max_length=255)
+    points_per_second = models.IntegerField(default=0)
+    points_per_click = models.IntegerField(default=1)
+
+
+class UserUpgrade(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='upgrades')
+    upgrade_name = models.CharField(max_length=100)
+    quantity = models.PositiveIntegerField(default=0)
+
+class Score(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='score')
+    points = models.BigIntegerField(default=0)
+    last_updated = models.DateTimeField(default=timezone.now)
+```
 ## Rychlé spuštění
 
 ```bash
