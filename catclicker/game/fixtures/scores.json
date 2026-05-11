@@ -1,0 +1,20 @@
+[
+{
+    "model": "game.score",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "points": 10000,
+        "last_updated": "2026-05-11T19:21:19.065Z"
+    }
+},
+{
+    "model": "game.score",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "points": 100000,
+        "last_updated": "2026-05-11T19:27:07.417Z"
+    }
+}
+]

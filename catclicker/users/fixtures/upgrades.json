@@ -1,0 +1,20 @@
+[
+{
+    "model": "users.userupgrade",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "upgrade_name": "Miska mléka",
+        "quantity": 1
+    }
+},
+{
+    "model": "users.userupgrade",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "upgrade_name": "Papírová krabice",
+        "quantity": 1
+    }
+}
+]

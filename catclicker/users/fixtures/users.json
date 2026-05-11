@@ -1,0 +1,22 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "name": "John Doe",
+        "hashed_password": "$argon2id$v=19$m=65536,t=3,p=4$UIrR2luLUcoZgzAmRIjx3g$ur55j0AhRU0Kr94CJ+EllGUyyVU8vH6T/yI8jteQ0qY",
+        "points_per_second": 0,
+        "points_per_click": 1
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "name": "Jane Doe",
+        "hashed_password": "$argon2id$v=19$m=65536,t=3,p=4$730vRcj5///f2zsHoHQOQQ$gT41iXEGXkLf7ANNKfu86ThXNrti3HyGaMdakJAjPv8",
+        "points_per_second": 6,
+        "points_per_click": 1
+    }
+}
+]
