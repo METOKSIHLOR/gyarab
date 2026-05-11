@@ -104,7 +104,6 @@ body {
     transform: translateY(-2px);
 }
 
-
 .modal {
     display: none;
     position: fixed;
@@ -114,7 +113,6 @@ body {
     background-color: rgba(0,0,0,0.4);
     backdrop-filter: blur(5px);
 }
-
 
 .modal-content {
     background-color: white;
@@ -128,7 +126,53 @@ body {
     display: flex;
     flex-direction: column;
 }
+.shop-filter-container {
+    margin: 10px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
 
+.shop-filter-container label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #888;
+    margin-left: 5px;
+}
+
+#shop-filter {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #4a4a4a;
+    background-color: #fff9fa;
+    border: 2px solid #ffedf2;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://w3.org' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff6090' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+}
+
+#shop-filter:hover {
+    border-color: #ff6090;
+}
+
+#shop-filter:focus {
+    border-color: #ff6090;
+    box-shadow: 0 0 8px rgba(255, 96, 144, 0.2);
+}
+
+#shop-filter option {
+    background: white;
+    color: #4a4a4a;
+}
 #upgrades-list {
     overflow-y: auto;
     padding-right: 10px;

@@ -6,7 +6,7 @@ let state = {
 }
 
 // Seznam vylepšení - musí odpovídat seznamu na backendu
-upgrades = [
+const upgrades= [
     {"name": "Miska mléka", "cost": 15, "effect": {"pps": 1, "ppc": 0}},
     {"name": "Papírová krabice", "cost": 100, "effect": {"pps": 5, "ppc": 0}},
     {"name": "Gumová myš", "cost": 250, "effect": {"pps": 0, "ppc": 2}},
@@ -65,7 +65,7 @@ async function buyUpgrade(name) {
 }
 
 // Dynamické vykreslení tlačítek v obchodě
-function renderUpgrades() {
+function renderUpgrades(upgrades) {
     const list = document.getElementById("upgrades-list")
     list.innerHTML = ""
     upgrades.forEach(u => {
@@ -92,8 +92,8 @@ const modal = document.getElementById('shopModal')
 
 document.getElementById('openShopBtn').onclick = () => {
     modal.style.display = "block"
-    renderUpgrades()
-};
+    renderUpgrades(upgrades)
+}
 
 document.querySelector('.close-modal').onclick = () => modal.style.display = "none"
 
@@ -139,7 +139,21 @@ document.getElementById("cat-target").addEventListener("click", async () => {
 
 // Inicializace hry při načtení stránky
 window.onload = async () => {
-    loadState()
+    await loadState()
+
+    document.getElementById('shop-filter').addEventListener("change", (event) => {
+    let filtered_upgrades = [...upgrades]
+    const value = event.target.value
+    console.log(value)
+    if (value === "price") {
+        filtered_upgrades.sort((a, b) => a.cost - b.cost)
+    }
+    else if (value === "pps" || value === "ppc") {
+        filtered_upgrades.sort((a, b) => b.effect[value] - a.effect[value])
+    }
+
+    renderUpgrades(filtered_upgrades)
+})
 }
 
 // Interval pro vizuální přičítání bodů každou sekundu (pasivní příjem v UI)
