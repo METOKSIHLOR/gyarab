@@ -82,6 +82,9 @@ Jednoduchá hra inspirovaná Cookie Clickerem vytvořená pomocí frameworku Dja
 ## Databázové schéma
 ![img.png](db_schema.png)
 
+## Use case diagram
+![img.png](ucdiagram.png)
+
 ## Atributy modelů
 
 ```bash
