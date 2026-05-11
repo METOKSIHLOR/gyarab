@@ -75,6 +75,10 @@ Jednoduchá hra inspirovaná Cookie Clickerem vytvořená pomocí frameworku Dja
 - pasivní získávání bodů
 - systém upgradů
 
+## Wireframes
+
+![img.png](wireframes.png)
+
 ## Databázové schéma
 ![img.png](db_schema.png)
 
