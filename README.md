@@ -116,6 +116,16 @@ python manage.py migrate
 ```
 
 ```bash
+python manage.py loaddata users.json 
+python manage.py loaddata upgrades.json
+python manage.py loaddata scores.json  
+```
+
+```bash
+python manage.py createsuperuser  
+```
+
+```bash
 docker-compose up --build
 ```
 

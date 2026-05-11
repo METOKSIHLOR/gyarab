@@ -3,19 +3,29 @@
     "model": "users.user",
     "pk": 1,
     "fields": {
-        "name": "John Doe",
-        "hashed_password": "$argon2id$v=19$m=65536,t=3,p=4$UIrR2luLUcoZgzAmRIjx3g$ur55j0AhRU0Kr94CJ+EllGUyyVU8vH6T/yI8jteQ0qY",
-        "points_per_second": 0,
-        "points_per_click": 1
+        "name": "admin",
+        "hashed_password": "pbkdf2_sha256$600000$l6S6GvI1Vv1V$S6Xf8H1Q8yR6y8jXjXjXjXjXjXjXjXjXjXjXjXjXjXj=",
+        "points_per_second": 1000,
+        "points_per_click": 100
     }
 },
 {
     "model": "users.user",
     "pk": 2,
     "fields": {
-        "name": "Jane Doe",
-        "hashed_password": "$argon2id$v=19$m=65536,t=3,p=4$730vRcj5///f2zsHoHQOQQ$gT41iXEGXkLf7ANNKfu86ThXNrti3HyGaMdakJAjPv8",
-        "points_per_second": 6,
+        "name": "Kotě_Master",
+        "hashed_password": "argon2id_dummy_hash",
+        "points_per_second": 150,
+        "points_per_click": 15
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "name": "Jane_Doe",
+        "hashed_password": "argon2id_dummy_hash",
+        "points_per_second": 12,
         "points_per_click": 1
     }
 }
