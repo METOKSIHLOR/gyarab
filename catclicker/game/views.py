@@ -32,7 +32,7 @@ upgrades = [
 ]
 
 # Jednoduchý formulář pro validaci názvu vylepšení při nákupu
-class UpdateForm(forms.Form):
+class UpgradeForm(forms.Form):
     name = forms.CharField(max_length=100)
 
 @csrf_exempt
@@ -78,7 +78,7 @@ def buy_upgrade(request):
     check_method(request, method="POST")
     data = check_data(request)
 
-    form = UpdateForm(data)
+    form = UpgradeForm(data)
     if not form.is_valid():
         return JsonResponse(form.errors, status=400)
 
