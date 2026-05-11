@@ -25,6 +25,7 @@ def create_user_score(sender, instance, created, **kwargs):
 
 # Model pro ukládání všech uživatelských nákupů
 class UserUpgrade(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='upgrades')
     upgrade_name = models.CharField(max_length=100)
     quantity = models.PositiveIntegerField(default=0)
