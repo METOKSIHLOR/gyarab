@@ -108,8 +108,12 @@ def buy_upgrade(request):
 
             obj, created = UserUpgrade.objects.get_or_create(
                 user=user,
-                upgrade_name=body["name"]
+                upgrade_id=upgrade['id'],
+                defaults={'quantity': 0}
             )
+            if created:
+                obj.quantity = 0
+
             obj.quantity += 1
             obj.save()
 
