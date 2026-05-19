@@ -1,0 +1,122 @@
+[
+  {
+    "model": "game.upgrade",
+    "pk": 1,
+    "fields": {
+      "name": "Miska mléka",
+      "cost": 15,
+      "pps": 1,
+      "ppc": 0
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 2,
+    "fields": {
+      "name": "Papírová krabice",
+      "cost": 100,
+      "pps": 5,
+      "ppc": 0
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 3,
+    "fields": {
+      "name": "Gumová myš",
+      "cost": 250,
+      "pps": 0,
+      "ppc": 2
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 4,
+    "fields": {
+      "name": "Škrabadlo Deluxe",
+      "cost": 500,
+      "pps": 12,
+      "ppc": 1
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 5,
+    "fields": {
+      "name": "Catnip High Quality",
+      "cost": 1200,
+      "pps": 25,
+      "ppc": 0
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 6,
+    "fields": {
+      "name": "Laserové ukazovátko",
+      "cost": 3000,
+      "pps": 50,
+      "ppc": 5
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 7,
+    "fields": {
+      "name": "Automatické krmítko",
+      "cost": 7500,
+      "pps": 120,
+      "ppc": 0
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 8,
+    "fields": {
+      "name": "Vyhřívaný pelíšek",
+      "cost": 15000,
+      "pps": 250,
+      "ppc": 10
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 9,
+    "fields": {
+      "name": "Robotický vysavač",
+      "cost": 50000,
+      "pps": 600,
+      "ppc": 0
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 10,
+    "fields": {
+      "name": "Kočičí kavárna",
+      "cost": 150000,
+      "pps": 1500,
+      "ppc": 50
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 11,
+    "fields": {
+      "name": "Chrám bohyně Bastet",
+      "cost": 500000,
+      "pps": 5000,
+      "ppc": 100
+    }
+  },
+  {
+    "model": "game.upgrade",
+    "pk": 12,
+    "fields": {
+      "name": "Vesmírná stanice MIAU",
+      "cost": 2000000,
+      "pps": 25000,
+      "ppc": 500
+    }
+  }
+]

@@ -4,7 +4,6 @@ from datetime import timedelta
 
 from users.models import User
 
-
 class Score(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='score')
@@ -29,3 +28,10 @@ class Score(models.Model):
 
     def __str__(self):
         return f"Score of {self.user.name}: {self.points}"
+
+class Upgrade(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    cost = models.IntegerField()
+    pps = models.IntegerField()
+    ppc = models.IntegerField()

@@ -5,25 +5,6 @@ let state = {
     ppc: 1  // Body za kliknutí
 }
 
-// Seznam vylepšení - musí odpovídat seznamu na backendu
-const upgrades= [
-    {"name": "Miska mléka", "cost": 15, "effect": {"pps": 1, "ppc": 0}},
-    {"name": "Papírová krabice", "cost": 100, "effect": {"pps": 5, "ppc": 0}},
-    {"name": "Gumová myš", "cost": 250, "effect": {"pps": 0, "ppc": 2}},
-
-    {"name": "Škrabadlo Deluxe", "cost": 500, "effect": {"pps": 12, "ppc": 1}},
-    {"name": "Catnip High Quality", "cost": 1200, "effect": {"pps": 25, "ppc": 0}},
-    {"name": "Laserové ukazovátko", "cost": 3000, "effect": {"pps": 50, "ppc": 5}},
-
-    {"name": "Automatické krmítko", "cost": 7500, "effect": {"pps": 120, "ppc": 0}},
-    {"name": "Vyhřívaný pelíšek", "cost": 15000, "effect": {"pps": 250, "ppc": 10}},
-    {"name": "Robotický vysavač", "cost": 50000, "effect": {"pps": 600, "ppc": 0}},
-
-    {"name": "Kočičí kavárna", "cost": 150000, "effect": {"pps": 1500, "ppc": 50}},
-    {"name": "Chrám bohyně Bastet", "cost": 500000, "effect": {"pps": 5000, "ppc": 100}},
-    {"name": "Vesmírná stanice MIAU", "cost": 2000000, "effect": {"pps": 25000, "ppc": 500}},
-]
-
 // Logika pro vizuální změnu kočky (otevření/zavření pusy)
 const catImg = document.querySelector('#cat-target img')
 const normalSrc = "/static/game/imgs/cat_close.png"
@@ -47,6 +28,13 @@ function updateDisplay() {
     document.getElementById('points').innerText = Math.floor(state.points)
     document.getElementById('pps').innerText = state.pps
     document.getElementById('ppc').innerText = state.ppc
+}
+
+async function getUpgrades() {
+    let upgrades
+    const response = await fetch("/api/game/upgrades/", {"method": "GET"})
+    upgrades = await response.json()
+    return upgrades
 }
 
 // Funkce pro nákup vylepšení přes API
@@ -74,8 +62,8 @@ function renderUpgrades(upgrades) {
 
         // Formátování textu efektu (PPS/PPC)
         let effectText = "";
-        if (u.effect.pps > 0) effectText += `+${u.effect.pps} PPS `;
-        if (u.effect.ppc > 0) effectText += `+${u.effect.ppc} PPC`;
+        if (u.pps > 0) effectText += `+${u.pps} PPS `;
+        if (u.ppc > 0) effectText += `+${u.ppc} PPC`;
 
         btn.innerHTML = `
             <strong>${u.name}</strong><br>
@@ -90,8 +78,9 @@ function renderUpgrades(upgrades) {
 // Správa modálního okna obchodu
 const modal = document.getElementById('shopModal')
 
-document.getElementById('openShopBtn').onclick = () => {
+document.getElementById('openShopBtn').onclick = async () => {
     modal.style.display = "block"
+    const upgrades = await getUpgrades()
     renderUpgrades(upgrades)
 }
 
@@ -141,15 +130,15 @@ document.getElementById("cat-target").addEventListener("click", async () => {
 window.onload = async () => {
     await loadState()
 
-    document.getElementById('shop-filter').addEventListener("change", (event) => {
-    let filtered_upgrades = [...upgrades]
+    document.getElementById('shop-filter').addEventListener("change", async (event) => {
+    let filtered_upgrades = await getUpgrades()
     const value = event.target.value
     console.log(value)
     if (value === "price") {
         filtered_upgrades.sort((a, b) => a.cost - b.cost)
     }
     else if (value === "pps" || value === "ppc") {
-        filtered_upgrades.sort((a, b) => b.effect[value] - a.effect[value])
+        filtered_upgrades.sort((a, b) => b[value] - a[value])
     }
 
     renderUpgrades(filtered_upgrades)

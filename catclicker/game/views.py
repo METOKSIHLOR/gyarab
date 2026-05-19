@@ -1,6 +1,7 @@
 # @csrf_exempt - oprava chyb CSRF.
 # V produkčním prostředí se to nedoporučuje,
 # ale protože se jedná o studijní projekt, bylo rozhodnuto ponechat to tak, jak je.
+from typing import Literal
 
 from django import forms
 from django.db import transaction
@@ -8,28 +9,9 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 
-from game.models import Score
+from game.models import Score, Upgrade
 from users.models import UserUpgrade
 from utils import get_user_profile, check_method, check_data
-
-# Seznam dostupných vylepšení s jejich cenou a efektem
-upgrades = [
-    {"name": "Miska mléka", "cost": 15, "effect": {"pps": 1, "ppc": 0}},
-    {"name": "Papírová krabice", "cost": 100, "effect": {"pps": 5, "ppc": 0}},
-    {"name": "Gumová myš", "cost": 250, "effect": {"pps": 0, "ppc": 2}},
-
-    {"name": "Škrabadlo Deluxe", "cost": 500, "effect": {"pps": 12, "ppc": 1}},
-    {"name": "Catnip High Quality", "cost": 1200, "effect": {"pps": 25, "ppc": 0}},
-    {"name": "Laserové ukazovátko", "cost": 3000, "effect": {"pps": 50, "ppc": 5}},
-
-    {"name": "Automatické krmítko", "cost": 7500, "effect": {"pps": 120, "ppc": 0}},
-    {"name": "Vyhřívaný pelíšek", "cost": 15000, "effect": {"pps": 250, "ppc": 10}},
-    {"name": "Robotický vysavač", "cost": 50000, "effect": {"pps": 600, "ppc": 0}},
-
-    {"name": "Kočičí kavárna", "cost": 150000, "effect": {"pps": 1500, "ppc": 50}},
-    {"name": "Chrám bohyně Bastet", "cost": 500000, "effect": {"pps": 5000, "ppc": 100}},
-    {"name": "Vesmírná stanice MIAU", "cost": 2000000, "effect": {"pps": 25000, "ppc": 500}},
-]
 
 # Jednoduchý formulář pro validaci názvu vylepšení při nákupu
 class UpgradeForm(forms.Form):
@@ -72,6 +54,23 @@ def click_cat(request):
 
     return JsonResponse({"points": score.points})
 
+def get_db_upgrades():
+    upgrades = Upgrade.objects.values()
+    return upgrades
+
+@csrf_exempt
+def get_upgrades(request):
+    check_method(request, method="GET")
+    try:
+        user = get_user_profile(request)
+    except ValueError as e:
+        error_data = e.args[0]
+        return JsonResponse({"error": error_data["error"]}, status=error_data["status"])
+
+    upgrades = get_db_upgrades()
+    return JsonResponse(list(upgrades), safe=False, json_dumps_params={"ensure_ascii": False})
+
+
 @csrf_exempt
 def buy_upgrade(request):
     """Logika nákupu vylepšení: kontrola zůstatku a aktualizace statistik uživatele."""
@@ -89,7 +88,8 @@ def buy_upgrade(request):
         error_data = e.args[0]
         return JsonResponse({"error": error_data["error"]}, status=error_data["status"])
 
-    # Vyhledání vylepšení v seznamu podle názvu
+    # Vyhledání vylepšení v DB podle názvu
+    upgrades = get_db_upgrades()
     upgrade = next((u for u in upgrades if u["name"] == body["name"]), None)
     if not upgrade:
         return HttpResponse("Upgrade not found", status=404)
@@ -114,8 +114,8 @@ def buy_upgrade(request):
             obj.save()
 
             # Zlepšení statistik uživatele (PPS - body za sekundu, PPC - body za klik)
-            user.points_per_second += upgrade["effect"]["pps"]
-            user.points_per_click += upgrade["effect"]["ppc"]
+            user.points_per_second += upgrade["pps"]
+            user.points_per_click += upgrade["ppc"]
             user.save()
 
     except Exception as e:
