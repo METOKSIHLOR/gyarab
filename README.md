@@ -118,6 +118,14 @@ class Score(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='score')
     points = models.BigIntegerField(default=0)
     last_updated = models.DateTimeField(default=timezone.now)
+    
+class Upgrade(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    cost = models.IntegerField()
+    pps = models.IntegerField()
+    ppc = models.IntegerField()
+
 ```
 ## Rychlé spuštění
 
@@ -130,6 +138,7 @@ python manage.py migrate
 ```
 
 ```bash
+python manage.py loaddata upgrades.json 
 python manage.py loaddata users.json 
 python manage.py loaddata upgrades.json
 python manage.py loaddata scores.json  
