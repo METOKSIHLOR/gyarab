@@ -50,10 +50,12 @@ body {
 }
 
 .card.flipped .front {
+    -webkit-user-drag: none;
     transform: rotateY(0);
 }
 
 .card.flipped .back {
+    -webkit-user-drag: none;
     transform: rotateY(180deg);
 }
 

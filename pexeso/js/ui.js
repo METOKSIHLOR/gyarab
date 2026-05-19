@@ -1,30 +1,41 @@
 function render() {
     const board = document.getElementById("game-board")
-    board.innerHTML = ""
 
     document.getElementById("score").textContent = `Score: ${userSettings.score}`
 
+    if (board.children.length === 0) {
+        cards.forEach(card => {
+            const div = document.createElement("div")
+            div.classList.add("card")
+            div.dataset.id = card.id
+
+            div.innerHTML = `
+                <img class="front" src="imgs/${userSettings.mode}/${card.value}.jpg">
+                <img class="back" src="imgs/card_back.jpg">
+            `
+
+            div.addEventListener("click", () => handleCardClick(card.id))
+            board.appendChild(div)
+        })
+    }
+
     cards.forEach(card => {
-        const div = document.createElement("div")
-        div.classList.add("card")
+        const div = board.querySelector(`[data-id="${card.id}"]`)
+        if (!div) return
+
+        if (card.selected || card.matched) {
+            div.classList.add("flipped")
+        } else {
+            div.classList.remove("flipped")
+        }
 
         if (card.matched) {
             div.style.visibility = "hidden"
             div.style.pointerEvents = "none"
+        } else {
+            div.style.visibility = "visible"
+            div.style.pointerEvents = "auto"
         }
-
-        if (card.selected || card.matched) {
-            div.classList.add("flipped")
-        }
-
-        div.innerHTML = `
-            <img class="front" src="imgs/${userSettings.mode}/${card.value}.jpg">
-            <img class="back" src="imgs/card_back.jpg">
-        `
-
-        div.addEventListener("click", () => handleCardClick(card.id))
-
-        board.appendChild(div)
     })
 }
 
@@ -113,6 +124,8 @@ function reset() {
     userSettings.score = 0
     firstCard = null
     secondCard = null
+
+    document.getElementById("game-board").innerHTML = ""
 
     initGame()
     render()
