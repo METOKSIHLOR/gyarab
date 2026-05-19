@@ -14,7 +14,7 @@ Repozitář obsahuje tři samostatné projekty:
 
 Před spuštěním kteréhokoliv projektu doporučuji aktivovat venv a nainstalovat potřebné závislosti:
 ```bash
-python3 -m venv venv
+python -m venv venv
 venv\Scripts\activate
 ```
 
