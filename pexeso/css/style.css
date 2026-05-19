@@ -1,6 +1,6 @@
 body {
-    background-image: url("../imgs/background.avif");
-    background-size: cover;
+    background-color: #1a472a;
+    background-image: radial-gradient(circle, #24633b 0%, #12331e 100%);
 }
 
 #container {
