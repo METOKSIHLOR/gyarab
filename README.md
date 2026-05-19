@@ -138,9 +138,9 @@ python manage.py migrate
 ```
 
 ```bash
-python manage.py loaddata upgrades.json 
+python manage.py loaddata game_upgrades.json 
 python manage.py loaddata users.json 
-python manage.py loaddata upgrades.json
+python manage.py loaddata user_upgrades.json
 python manage.py loaddata scores.json  
 ```
 

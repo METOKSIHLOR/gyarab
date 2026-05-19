@@ -23,6 +23,6 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(UserUpgrade)
 class UpdateAdmin(admin.ModelAdmin):
     list_per_page = 20
-    list_filter = ['user__name', 'upgrade_name']
-    search_fields = ['user__name', "upgrade_name"]
+    list_filter = ['user__name', 'upgrade']
+    search_fields = ['user__name', "upgrade"]
 # Register your models here.

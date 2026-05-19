@@ -1,0 +1,47 @@
+[
+  {
+    "model": "users.userupgrade",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "upgrade": 12,
+      "quantity": 1
+    }
+  },
+  {
+    "model": "users.userupgrade",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "upgrade": 11,
+      "quantity": 3
+    }
+  },
+  {
+    "model": "users.userupgrade",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "upgrade": 1,
+      "quantity": 10
+    }
+  },
+  {
+    "model": "users.userupgrade",
+    "pk": 4,
+    "fields": {
+      "user": 2,
+      "upgrade": 4,
+      "quantity": 2
+    }
+  },
+  {
+    "model": "users.userupgrade",
+    "pk": 5,
+    "fields": {
+      "user": 3,
+      "upgrade": 1,
+      "quantity": 1
+    }
+  }
+]
