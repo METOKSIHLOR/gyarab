@@ -12,7 +12,11 @@ Repozitář obsahuje tři samostatné projekty:
 
 # Instalace
 
-Před spuštěním kteréhokoliv projektu doporučuji nainstalovat potřebné závislosti:
+Před spuštěním kteréhokoliv projektu doporučuji aktivovat venv a nainstalovat potřebné závislosti:
+```bash
+python3 -m venv venv
+venv\Scripts\activate
+```
 
 ```bash
 pip install -r requirements.txt
@@ -28,18 +32,25 @@ Projekt obsahuje dvě verze:
 
 ## Rychlé spuštění
 
-Připravte .env: 
+### Připravte .env: 
 
 ```bash
-cp kurzkonverter/{v1 nebo v2}/.env_example kurzkonverter/{v1 nebo v2}/.env
+cp kurzkonverter/v1/.env_example kurzkonverter/v1/.env
+```
+nebo 
+```bash
+cp kurzkonverter/v2/.env_example kurzkonverter/v2/.env
 ```
 
-Spusťte aplikaci:
+### Spusťte aplikaci:
 
 ```bash
-python kurzkonverter/{v1 nebo v2}/src/main.py
+python kurzkonverter/v1/src/main.py
 ```
-
+nebo 
+```bash
+python kurzkonverter/v2/src/main.py
+```
 ---
 
 # 2. Pexeso
