@@ -91,7 +91,7 @@ Jednoduchá hra inspirovaná Cookie Clickerem vytvořená pomocí frameworku Dja
 ![img.png](wireframes.png)
 
 ## Databázové schéma
-![img.png](db_schema.png)
+![img.png](dbschema.png)
 
 ## Use case diagram
 ![img.png](ucdiagram.png)
@@ -106,27 +106,32 @@ class User(models.Model):
     points_per_second = models.IntegerField(default=0)
     points_per_click = models.IntegerField(default=1)
 
+    upgrades = models.ManyToManyField(
+        'game.Upgrade',
+        through='UserUpgrade',
+        related_name='users'
+    )
 
 class UserUpgrade(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='upgrades')
-    upgrade_name = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_upgrades')
+    upgrade = models.ForeignKey("game.Upgrade", on_delete=models.CASCADE, related_name='user_upgrades')
     quantity = models.PositiveIntegerField(default=0)
-
+       
 class Score(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='score')
     points = models.BigIntegerField(default=0)
     last_updated = models.DateTimeField(default=timezone.now)
-    
+
 class Upgrade(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     cost = models.IntegerField()
     pps = models.IntegerField()
     ppc = models.IntegerField()
-
 ```
+
 ## Rychlé spuštění
 
 ```bash
