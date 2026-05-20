@@ -43,6 +43,7 @@ body {
     position: absolute;
     backface-visibility: hidden;
     transition: transform 0.3s;
+    -webkit-user-drag: none;
 }
 
 .front {
@@ -50,12 +51,10 @@ body {
 }
 
 .card.flipped .front {
-    -webkit-user-drag: none;
     transform: rotateY(0);
 }
 
 .card.flipped .back {
-    -webkit-user-drag: none;
     transform: rotateY(180deg);
 }
 
