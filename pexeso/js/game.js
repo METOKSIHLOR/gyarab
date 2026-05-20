@@ -44,6 +44,7 @@ function checkMatchCards() {
         if (flag) {
             setTimeout(() => {
             alert("YOU WON!")
+            document.getElementById("game-board").innerHTML = ""
             initGame()
             render()
             }, 500)
